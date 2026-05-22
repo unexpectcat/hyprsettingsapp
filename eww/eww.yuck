@@ -1,0 +1,61 @@
+;; State
+(defvar active_tab "look")
+(defvar rounding 0)
+
+;; --- Sub-Widgets (Pages) ---
+
+(defwidget look_and_feel_page []
+  (box :orientation "v" :space-evenly false :spacing 10
+    (label :class "content-title" :halign "start" :text "Look and Feel")
+    (box :orientation "h" :space-evenly false :spacing 20 :class "card"
+      (label :text "Corner Radius")
+      (scale :min 0 :max 40 :value rounding :hexpand true
+             :onchange "./update_config.sh {}"))))
+
+(defwidget keybinds_page []
+  (box :orientation "v" :space-evenly false :spacing 10
+    (label :class "content-title" :halign "start" :text "Keybinds")
+    (label :text "Terminal: SUPER + T" :halign "start")
+    (label :text "Browser: SUPER + W" :halign "start")))
+
+;; --- Main Window ---
+
+(defwindow settings_menu
+  :monitor 0
+  :geometry (geometry :x "0%" :y "0%" :width "700px" :height "450px" :anchor "center")
+  :stacking "fg"
+  (box :orientation "h" :space-evenly false :class "main-container"
+    
+    ;; Sidebar
+    (box :orientation "v" :width 220 :class "sidebar" :space-evenly false
+      (label :class "header" :text "Settings" :halign "start")
+      
+      (button :class {active_tab == "look" ? "active" : ""} 
+              :onclick "eww update active_tab='look'" "Personalization")
+      (button :class "sub-item" 
+              :onclick "eww update active_tab='look'" "  Look and feel")
+      
+      (button :class {active_tab == "keys" ? "active" : ""} 
+              :onclick "eww update active_tab='keys'" "Keybinds")
+      
+      (button :onclick "eww update active_tab='lang'" "Language")
+      (button :onclick "eww update active_tab='devices'" "Devices")
+      (button :onclick "eww update active_tab='apps'" "Default Apps"))
+
+    ;; Content Container
+    (box :orientation "v" :hexpand true :class "content-area"
+      
+      ;; Page 1: Look and Feel
+      (box :visible {active_tab == "look"}
+        (look_and_feel_page))
+
+      ;; Page 2: Keybinds
+      (box :visible {active_tab == "keys"}
+        (keybinds_page))
+
+      ;; Page 3: Placeholder for others
+      (box :visible {active_tab != "look" && active_tab != "keys"}
+        (label :text "Section under development..."))
+    )
+  )
+)

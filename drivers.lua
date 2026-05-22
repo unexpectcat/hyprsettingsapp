@@ -1,2 +1,8 @@
-hl.env("LIBVA_DRIVER_NAME", "nvidia")
-hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+local nvidia_dkms = true
+
+if nvidia_dkms then
+  hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
+  hl.env("NVD_BACKEND", "direct")
+  hl.env("LIBVA_DRIVER_NAME", "nvidia")
+  hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+end

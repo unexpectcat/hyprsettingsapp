@@ -11,6 +11,8 @@ function KEYBINDS.apply_keybinds()
     hl.bind(key, hl.dsp.exec_cmd(app))
   end
   
+  
+  
   --defalt keybinds
   local apps = require(path_to_settings_app .. "apps")
   local keys = require(path_to_settings_app .. "keys")
@@ -18,6 +20,8 @@ function KEYBINDS.apply_keybinds()
   bind_key(keys.terminal, apps.terminal)
   bind_key(keys.browser, apps.browser)
   bind_key(keys.code_editor, apps.code_editor)
+  bind_key(keys.capture_screenshot, 'sh ~/.config/hypr/scripts/capture_screenshot.sh ')
+
 
 
 
@@ -25,7 +29,6 @@ function KEYBINDS.apply_keybinds()
   hl.bind(keys.close_window, hl.dsp.window.close("active"))
   hl.bind(keys.fullscreen, hl.dsp.window.fullscreen({action = "toggle"}))
   hl.bind(keys.false_fullscreen, hl.dsp.window.fullscreen({action = "toggle", mode = "maximized"}))
-
 
 
   for _, k in ipairs(KEYBINDS.keybinds) do

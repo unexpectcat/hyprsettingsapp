@@ -1,0 +1,14 @@
+{
+  "appearance": {
+    "rounding": 0
+  },
+  "keybinds": {
+    "terminal": "SUPER + T",
+    "browser": "SUPER + W",
+    "code_editor": "SUPER + C",
+    "close_window": "SUPER + Q",
+    "kill_window": "SUPER + SHIFT + Q",
+    "fullscreen": "SUPER + SHIFT + F",
+    "false_fullscreen": "SUPER + CTRL + F"
+  }
+}

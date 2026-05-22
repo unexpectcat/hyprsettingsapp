@@ -1,12 +1,13 @@
--- those are default keys
 -- to add your own command-keybinds edit array in keybindds.lua
 local KEYS = {}
-KEYS.terminal = "SUPER + T"
-KEYS.browser = "SUPER + W"
-KEYS.code_editor = "SUPER + C"
-KEYS.close_window = "SUPER + Q"
-KEYS.kill_window = "SUPER + SHIFT + Q"
-KEYS.fullscreen = "SUPER + SHIFT + F"
-KEYS.false_fullscreen = "SUPER + CTRL + F"
+
+KEYS.terminal         = settings.keybinds.terminal
+KEYS.browser          = settings.keybinds.browser
+KEYS.code_editor      = settings.keybinds.code_editor
+KEYS.close_window     = settings.keybinds.close_window
+KEYS.kill_window      = settings.keybinds.kill_window
+KEYS.fullscreen       = settings.keybinds.fullscreen
+KEYS.false_fullscreen = settings.keybinds.false_fullscreen
+KEYS.capture_screenshot = "SHIFT + SUPER + S"
 
 return KEYS
